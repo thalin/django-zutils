@@ -1,1 +1,14 @@
 Zeke's utilities for Django.
+
+zutils.views.AddObjectXToObjectY:
+    This is a class-based view that makes a few assumptions:
+    * classx has a foreign key relationship to classy which uses the default related_name (ie 'classx_set')
+    * probably more but I don't remember what right now
+    __init__:
+        required arguments:
+            classx - A new instance of this class will be created
+            classy - An existing instance of this class will have the classx object added to it
+        optional arguments:
+            form_class - if you don't want to use the default ModelForm for classx, supply a form here.
+            login_required - if you want this view to be restricted to logged in users only, set this to True
+
