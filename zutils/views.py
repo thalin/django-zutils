@@ -8,14 +8,17 @@ class AddObjectXToObjectY(object):
     This is an object view which allows you to set a field on an 
     Object Y to a newly created Object X.
     """
-    def __init__(self, classx, classy, form_class=None, login_required=False):
+    def __init__(self, classx, classy, form_class=None, login_required=False, attr=None):
         self.classx = classx
         self.classy = classy
         if form_class:
             self.form_class = form_class
         else:
             self.form_class = forms.models.modelform_factory(self.classx)
-        self.attr = '%s_set' % self.classx.__name__.lower()
+        if attr:
+            self.attr = attr
+        else:
+            self.attr = '%s_set' % self.classx.__name__.lower()
         if login_required:
             self.__call__ = log_req(self._call_func)
         else:
