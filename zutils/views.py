@@ -24,7 +24,7 @@ class AddObjectXToObjectY(object):
         return "Add %s to %s" % (self.classx.__name__, self.classy.__name__)
 
     def __call__(self, request, *args, **kwargs):
-        return self.view(self, request, *args, **kwargs)
+        return self.view(request, *args, **kwargs)
 
     def view(self, request, *args, **kwargs):
         object_id = kwargs['object_id']
